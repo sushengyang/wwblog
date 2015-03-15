@@ -1,0 +1,85 @@
+---
+type: blog-post
+title: Build an RPG in Elm, Part 1
+date: 2015-02-17
+tags: elm, programming, rpg, games
+published: false
+---
+
+Last week I discovered the [Elm programming language](http://elm-lang.org/). It's a functional language that compiles to HTML/CSS/JavaScript, and it seems pretty nice for creating browser-based games, among other things. I decided to use it to create a simple role-playing game called [Ode](https://github.com/williewheeler/ode).
+
+<img class="figure img-responsive" src="https://dl.dropboxusercontent.com/u/54053289/ode3.png" alt="Ode screenshot">
+
+This is the first in a series of posts that explains&mdash;in tutorial fashion&mdash;how I did it. I'll assume that you've already [installed Elm](http://elm-lang.org/Install.elm) and goofed around with some of the [examples](https://github.com/evancz/elm-examples).
+
+# Set up the project skeleton
+
+Here's the layout:
+
+~~~ plain_text
+ode
+|_Main.elm
+|_elm-package.json
+|_resources/
+|_src/
+~~~
+
+`Main.elm` is an empty file for now. It will be the entry point for our app. This isn't the required filename or anything like that; it's just what I chose.
+
+`src` and `resources` are empty directories for the moment. They are for source code and web resources (e.g., images), respectively. Again, these are just names that I chose, rather than being required.
+
+`elm-package.json` is where we set up our project dependencies, more or less along the lines of a Ruby `Gemfile`, Node `package.json`, etc.:
+
+~~~ javascript
+{
+  "version": "0.0.1",
+  "summary": "Tile-based RPG.",
+  "repository": "https://github.com/williewheeler/ode.git",
+  "license": "MIT",
+  "source-directories": [ "src" ],
+  "exposed-modules": [],
+  "dependencies": {
+    "elm-lang/core": "1.1.0 <= v < 2.0.0",
+    "evancz/elm-markdown": "1.0.0 <= v < 2.0.0"
+  }
+}
+~~~
+
+After you create your `elm-package.json`, run
+
+~~~ shell
+$ elm-package install
+~~~
+
+to grab your dependencies, which will appear in a directory called `elm-stuff`. Again this is analogous to running `bundle install` in Ruby or `npm install` in Node.
+
+If you like, you can create a `.gitignore` file and add `elm-stuff` to that.
+
+OK, that's our skeleton. Now let's get some game tiles.
+
+# Download a tileset
+
+I grabbed the [Planet Cute tileset](http://www.lostgarden.com/2007/05/dancs-miraculously-flexible-game.html) by [Daniel Cook](https://twitter.com/danctheduck). For this tutorial you probably want the same thing just because the tile rendering code depends on specific characteristics of this tileset.
+
+Put the tileset in the `resources` directory:
+
+~~~ plain_text
+ode
+|_resources
+  |_planet-cute
+    |_Brown Block.png
+    |_Character Boy.png
+    |_etc.
+~~~
+
+That concludes our setup. We're ready for some actual Elm coding.
+
+# Render a basic map
+
+~~~ haskell
+module Ode.Main where
+
+import Graphics.Element (..)
+
+main = ...
+~~~
