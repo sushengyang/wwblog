@@ -13,7 +13,7 @@ qsort (x:xs) = qsort (filter (<= x) xs) ++ [x] ++ qsort (filter (> x) xs)
 
 This recursive definition is dense but easy to follow. The first line is the base case. In the second line, `x` is the first element and `xs` is the rest of the list. Using `x` as the pivot, we concatenate the sorted lower elements, the pivot and the sorted higher elements.
 
-Hree it is in action:
+Here it is in action:
 
 ~~~ haskell
 ghci> qsort [9,22,1,23,0,-12,3,44,5,4,5,2,44,3,14,15,23]
