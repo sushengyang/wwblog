@@ -4,7 +4,7 @@ title: Mergesort in Haskell
 date: 2015-03-17
 tags: mergesort, algorithms, haskell, functional programming
 ---
-After yesterday's post [quicksort in Haskell](2015-03-16-haskell-reveals-the-essence-of-quicksort.html), I was curious whether mergesort is as elegant. Not quite, but I learned a bit along the way.
+After yesterday's post on [quicksort in Haskell](2015-03-16-haskell-reveals-the-essence-of-quicksort.html), I was curious whether mergesort is as elegant. Not quite, but I learned a bit along the way.
 
 Here was my initial mergesort implementation:
 
