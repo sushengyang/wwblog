@@ -40,7 +40,7 @@ You'll also find it useful to have some kind of REST client. For Chrome you can 
 
 ## Step 1. Project Setup
 
-Use the Gradle Built Init plugin to set up a new project. Here I'm calling it `spring-mongo-angular-starter`; substitute whatever project name you lcssike.
+Use the Gradle Built Init plugin to set up a new project. Here I'm calling it `spring-mongo-angular-starter`; substitute whatever project name you like.
 
 ~~~
 $ mkdir spring-mongo-angular-starter
