@@ -4,7 +4,7 @@ title: Specifications vs Algorithms in Haskell
 date: 2015-03-20
 tags: specifications, algorithms, haskell, functional programming
 ---
-Something I enjoy about learning a new subject is coming to a realization that's so obvious to the cognoscenti as to be scarcely worth mentioning. Fortunately Richard Bird in his [Pearls of Functional Algorithm Design](http://www.amazon.com/Pearls-Functional-Algorithm-Design-Richard/dp/0521513383) mentioned it anyway:
+Something I enjoy about learning a new subject is coming to a realization that's so obvious to the cognoscenti as to be scarcely worth mentioning. Fortunately Richard Bird in his [Pearls of Functional Algorithm Design](http://www.amazon.com/Pearls-Functional-Algorithm-Design-Richard/dp/0521513383) mentions it anyway:
 
 > Many, though by no means all, of the pearls start with a specification in Haskell and then go on to calculate a more efficient version. My aim in writing these particular pearls is to see to what extent algorithm design can be cast in a familiar mathematical tradition of calculating a result by using well-established mathematical principles, theorems and laws. While it is generally true in mathematics that calculations are designed to simplify complicated things, in algorithm design it is usually the other way around: simple but inefficient programs are transformed into more efficient versions that can be completely opaque. It is not the final program that is the pearl; rather it is the calculation that yields it. &mdash; Richard Bird, *Pearls of Functional Algorithm Design* (page x).
 
