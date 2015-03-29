@@ -22,7 +22,7 @@ Here's one way to do this with `foldl`:
 
 ~~~ haskell
 foldlSum :: (Num a) => [a] -> a
-foldlSum = foldl (\acc x -> acc + x) 0
+foldlSum xs = foldl (\acc x -> acc + x) 0 xs
 ~~~
 
 `foldl` takes three arguments:
@@ -35,20 +35,27 @@ At the end `foldl` returns the accumulated value.
 
 The step function combines a given list element with the current accumulated value to produce a new accumulated value. In the example above it simply adds the list element `x` to `acc`.
 
-Incidentally, since our lambda expression is really just a sum, we can recast `foldlSum` more economically as
+Using [partial application](https://wiki.haskell.org/Partial_application) we can simplify the definition a bit:
+
+~~~ haskell
+foldlSum :: (Num a) => [a] -> a
+foldlSum = foldl (\acc x -> acc + x) 0
+~~~
+
+Also, since our lambda expression is really just a sum, we can recast `foldlSum` more economically as
 
 ~~~ haskell
 foldlSum :: (Num a) => [a] -> a
 foldlSum = foldl (+) 0
 ~~~
 
-That makes it pretty clear what this function is doing. Basically it says to initialize the sum at 0, and gobble up list elements from the left, accumulating using `(+)`.
+That makes it clear what this function is doing. Basically it says to initialize the sum at 0, and gobble up list elements from the left, accumulating using `(+)`.
 
 ## foldr
 
 I mentioned above that there's a `foldr` function that processes the list from right to left. Given the examples above, you might wonder what difference it makes. Whether we compute the sum from left to right or right to left, the result is the same, and the performance characteristics are the same.
 
-It turns out though that there are cases where `foldr` is helpful. One kind of example is where we're generating a list. (Note that folding isn't restricted to generating scalars&mdash;we can generate lists or really anything else.) Suppose that we wanted to take a list and duplicate every element, so that **[3, 4, 3, 1, 0]** becomes **[3, 3, 4, 4, 3, 3, 1, 1, 0, 0]**. Here's how we can do this with `foldl`:
+It turns out though that there are cases where `foldr` is helpful. One kind of example is where we're generating a list. (Note that folding isn't restricted to generating scalars&mdash;we can generate lists or really anything else.) Suppose that we wanted to take a list and duplicate every element, so that **[3, 4, 3, 1, 0]** becomes **[3, 3, 4, 4, 3, 3, 1, 1, 0, 0]**. Here's how we can do this with `foldl` (again taking advantage of partial application):
 
 ~~~ haskell
 foldlDupList :: [a] -> [a]
