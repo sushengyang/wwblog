@@ -2,7 +2,7 @@
 type: blog-post
 title: Redirecting HTTP to HTTPS in Spring Boot
 date: 2015-03-25
-tags: spring, spring boot, tomcat, security, quick tips
+tags: java, spring, spring boot, tomcat, security, quick tips
 ---
 When using the embedded Tomcat server with Spring Boot, by default you choose either HTTP or HTTPS. But sometimes you want to allow users to come in through HTTP and then redirect them to HTTPS.
 
