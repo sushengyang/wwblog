@@ -81,7 +81,7 @@ val us = new Country("us", "US");
 // Holidays
 val christmas = new Holiday("christmas", "Christmas");
 val indepDayUs = new Holiday("indep_day_us", "Independence Day (US)");
-val thanksgiving = new Holiday("thanksgiving", "Thanksgiving (US)");
+val thanksgivingUs = new Holiday("thanksgiving_us", "Thanksgiving (US)");
 val victoriaDay = new Holiday("victoria_day", "Victoria Day (Canada)");
 
 // Setup
@@ -95,7 +95,7 @@ ksession.insert(us);
 
 ksession.insert(christmas);
 ksession.insert(indepDayUs);
-ksession.insert(thanksgiving);
+ksession.insert(thanksgivingUs);
 ksession.insert(victoriaDay);
 
 ksession.insert(new RegionContains(eu, de));
@@ -109,7 +109,7 @@ ksession.insert(new Observes(de, christmas));
 ksession.insert(new Observes(uk, christmas));
 ksession.insert(new Observes(us, christmas));
 ksession.insert(new Observes(us, indepDayUs));
-ksession.insert(new Observes(us, thanksgiving));
+ksession.insert(new Observes(us, thanksgivingUs));
 ~~~
 
 (The `val` stuff is from [Project Lombok](http://projectlombok.org/).)
@@ -118,8 +118,8 @@ Then I have a bunch of alerts:
 
 ~~~ java
 alert(ksession, indepDayUs, new CountryLowBookingsAlert("C-1000", us));
-alert(ksession, thanksgiving, new CountryLowBookingsAlert("C-1010", ca));
-alert(ksession, thanksgiving, new CountryLowBookingsAlert("C-1015", us));
+alert(ksession, thanksgivingUs, new CountryLowBookingsAlert("C-1010", ca));
+alert(ksession, thanksgivingUs, new CountryLowBookingsAlert("C-1015", us));
 alert(ksession, null, new CountryLowBookingsAlert("C-1100", us));
 alert(ksession, christmas, new RegionLowBookingsAlert("R-2000", eu));
 alert(ksession, christmas, new RegionLowBookingsAlert("R-2010", na));
@@ -154,7 +154,7 @@ ALERT R-2020: Low bookings for region=North America
 Diagnosis for alert R-2020: holiday=Independence Day (US) for country=US.
 ~~~
 
-For alert C-1000 there was a single, unambiguous diagnosis. For C-1010 there wan't one since Canadians don't celebrate Thanksgiving. For R-2000 and R-2010 there were multiple diagnoses since the regions involved have multiple countries that celebrate Christmas.
+For alert C-1000 there was a single, unambiguous diagnosis. For C-1010 there wan't one since Canadians don't celebrate American Thanksgiving. For R-2000 and R-2010 there were multiple diagnoses since the regions involved have multiple countries that celebrate Christmas.
 
 # Concluding remarks
 
