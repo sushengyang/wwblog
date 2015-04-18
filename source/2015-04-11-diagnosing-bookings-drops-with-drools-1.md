@@ -18,7 +18,7 @@ I've been thinking of using a rules engine to help diagnose unexpected bookings 
 
 To make this work we'd need data ("facts" in [logic programming](http://en.wikipedia.org/wiki/Logic_programming) parlance) from a variety of sources and also rules. We would feed the diagnoses into downstream systems that decide what to do given a diagnosis.
 
-I created a simple toy project called [Beedoc](https://github.com/williewheeler/beedoc) on GitHub. It uses the open source, Java-based [Drools](http://www.drools.org/) rules engine to generate diagnoses for incoming alerts. Drools is primarily a reactive, [forward chaining](http://en.wikipedia.org/wiki/Forward_chaining) system, but it also supports [backward chaining](http://en.wikipedia.org/wiki/Backward_chaining). Beedoc uses both inference styles, as we'll see.
+I created a simple toy project called [bdoc](https://github.com/williewheeler/bdoc) on GitHub. It uses the open source, Java-based [Drools](http://www.drools.org/) rules engine to generate diagnoses for incoming alerts. Drools is primarily a reactive, [forward chaining](http://en.wikipedia.org/wiki/Forward_chaining) system, but it also supports [backward chaining](http://en.wikipedia.org/wiki/Backward_chaining). Bdoc uses both inference styles, as we'll see.
 
 # Diagnosing drops due to holidays
 
@@ -52,8 +52,7 @@ rule "Diagnose region low bookings due to holiday"
 when
   $r : Region()
   $a : RegionLowBookingsAlert(region == $r)
-  $c : Country()
-  $rc : RegionContains(region == $r, country == $c)
+  $c : Country(region == $r)
   $h : Holiday()
   $t : TodayIs(holiday == $h)
   $o : Observes(country == $c, holiday == $h)
@@ -73,10 +72,10 @@ For facts, I just hardcoded a bunch. In a real system these would come from some
 val na = new Region("na", "North America");
 val eu = new Region("eu", "Europe");
 
-val ca = new Country("ca", "Canada");
-val de = new Country("de", "Germany");
-val uk = new Country("uk", "UK");
-val us = new Country("us", "US");
+val ca = new Country("ca", "Canada", na);
+val de = new Country("de", "Germany", eu);
+val uk = new Country("uk", "UK", eu);
+val us = new Country("us", "US", na);
 
 // Holidays
 val christmas = new Holiday("christmas", "Christmas");
