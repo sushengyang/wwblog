@@ -42,7 +42,30 @@ Clearly these don't exhaust the possibilities. But even this simple example illu
 
 ## A first pass at our diagnostic rules
 
-TODO
+A straightforward approach to implementing diagnostic rules is just to implement more or less specific diagnostic rules explicitly. For example, suppose we want to diagnose situations in which we have a region such that all and only points of sale in that region are down. (That is a fairly specific kind of situation that occurs from time to time.) We might formulate a rule along these lines:
+
+~~~ java
+rule "Region unhealthy"
+salience 10
+when
+  $r : Region()
+  $c : Component(code == $r.code + "_web_ui")
+  forall( $pos : PointOfSale(region == $r)
+          Alert(pos == $pos)
+        )
+  // Null-safe dereferencing operator
+  forall( $a : Alert(pos!.region == $r) )
+then
+  logger.info("All and only POSes in region {} are unhealthy.", $r.getName());
+  insert(new FindSystemDiagnosisGoal($c));
+end
+~~~
+
+The left-hand side (LHS) specifies that the rule applies when there exists some region `$r` such that all and only points of sale in `$r` are alerting. If based on that trigger alone we knew what was wrong, then the RHS could simply insert the diagnosis. But even with our simple example there are multiple possible explanations, so we simply set a diagnostic goal to look for problems with the region's web UI or its dependencies. With this approach we'd define additional explicit rules to try to get to the bottom of things.
+
+This approach has the benefit that the rules match how people might reason about the domain. When human experts perform a diagnosis it's usually based on knowledge of how certain specific parts of the system impact other specific parts of the system. So it's pretty easy to write rules in this style.
+
+However another approach is possible. Instead of writing a variety of rules covering a variety of specific dependencies, we can treat our dependencies generically using a directed acyclic graph (DAG), and then write a small number of generic rules that know how to use the graph to diagnose faults. That's what we'll try next.
 
 ## Tracing component dependencies
 
