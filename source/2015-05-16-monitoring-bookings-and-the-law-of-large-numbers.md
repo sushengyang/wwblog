@@ -23,7 +23,7 @@ Now suppose we repeat the experiment, but this time we flip the coin 1,000 times
 
 This is definitely a biased coin, as a fair coin can't produce a sample like that. Not only that, but we're pretty confident that the probability of heads is very close to 2/3.
 
-In each case we got 67% heads and 33% tails, but in the first we couldn't draw any conclusion about bias at all (let alone the degree of bias), whereas in the second case the bias and its degree are clear as day.
+In each case we got 67% heads and 33% tails, but in the first we couldn't draw any conclusion about bias at all (let alone the degree of bias), whereas in the second case the bias and its degree are clear as day. So what's the difference?
 
 The difference is the sample size. There's something in statistics called the [law of large numbers](http://en.wikipedia.org/wiki/Law_of_large_numbers), which basically says that the sample mean converges to the population mean as the sample gets bigger. Here we're dealing with sample proportions rather than sample means (i.e., proportion of heads in the sample), but for that we have [Borel's law of large numbers](http://en.wikipedia.org/wiki/Law_of_large_numbers#Borel.27s_law_of_large_numbers): the proportion of an event (like getting heads) converges to the true proportion with increasing sample size.
 
