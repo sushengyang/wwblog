@@ -37,7 +37,7 @@ Now let's bring this back to bookings.
 
 ## Applying the law of large numbers to bookings
 
-We can think of bookings as binomial experiments. During any given window of time, we have a certain number of visitors to the site, and they either book (success) or not (failure). The probability of a booking, known in marketing-speak as a _conversion rate_, is generally far lower than 0.5; _p_ = 0.01 would be far more typical. But we're still talking about a binomial experiment.
+We can think of bookings as binomial experiments. During any given window of time, we have a certain number of visitors to the site, and they either book (success) or not (failure). The probability of a booking, known in marketing-speak as a _conversion rate_, is generally far lower than 0.5; _p_ = 0.03 would be far more typical. But we're still talking about a binomial experiment.
 
 Now imagine that our company offers a number of different products via different points of sale (e.g., .ca, .com, .co.uk, etc.) and different channels. Imagine further that traffic patterns change depending on the hour of the day, the day of the week, and maybe even the time of the month or the time of the year.
 
