@@ -51,4 +51,6 @@ At night, there's not that much traffic, and so now we're dealing with small _n_
 
 (We're just using day and night as an example. The same remarks apply to weekdays vs. weekends, popular products vs. less popular products, big points of sale vs. small ones, etc.)
 
-Now it should be clear why no single static threshold can correctly solve the false positive/negative dilemma. In high volume contexts, we want narrower thresholds (e.g., 10%), because deltas between the historical and current proportions are more signal than noise, thanks to the law of large numbers. In low volume contexts, we need wide thresholds&mdash;sometimes really wide threshold&mdash;in order to reduce false alarms. No static threshold can be both at the same time.
+Now it should be clear why no single static threshold can correctly solve the false positive/negative dilemma. In high volume contexts, we want narrower thresholds (e.g., 10%), because deltas between the historical and current proportions are more signal than noise, thanks to the law of large numbers. In low volume contexts, we need wide thresholds&mdash;these could easily be 50% or larger&mdash;in order to reduce false alarms.
+
+No static threshold can be both narrow and wide at the same time, and that's what creates the dilemma.
