@@ -11,7 +11,7 @@ You may have noticed that sometimes, there's just no good threshold. Whatever nu
 
 Why isn't there a good number?
 
-# Coin flips
+## Coin flips
 
 Let's start by looking at something simple: coin flips.
 
@@ -35,7 +35,7 @@ Using the language of binomial experiments, our first experiment was _n_ = 6, an
 
 Now let's bring this back to bookings.
 
-# Applying the law of large numbers to bookings
+## Applying the law of large numbers to bookings
 
 We can think of bookings as binomial experiments. During any given window of time, we have a certain number of visitors to the site, and they either book (success) or not (failure). The probability of a booking, known in marketing-speak as a _conversion rate_, is generally far lower than 0.5; _p_ = 0.01 would be far more typical. But we're still talking about a binomial experiment.
 
