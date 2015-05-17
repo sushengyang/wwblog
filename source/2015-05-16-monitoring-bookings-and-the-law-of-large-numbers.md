@@ -17,7 +17,7 @@ Let's start by looking at something simple: coin flips.
 
 Suppose that somebody hands you a quarter and tells you to decide whether it's a fair coin. So you flip the coin six times: `H T T H H H`. In other words, 67% heads and 33% tails. Is it fair?
 
-Pretty clearly it's impossible to draw a strong conclusion here. Both fair and unfair coins can generate runs like that. Maybe we suspect that it's not biased in favor of tails, but even that isn't very strongly supported by the evidence.
+Pretty clearly it's impossible to draw a strong conclusion here. Both fair and unfair coins can generate runs like that.
 
 Now suppose we repeat the experiment, but this time we flip the coin 1,000 times, getting 667 heads and 333 tails.
 
