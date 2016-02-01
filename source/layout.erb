@@ -59,7 +59,7 @@
 
               <!-- FIXME Use different layout for non-blog post, rather than testing for current article -->
               <h2 class="blog-post-title"><%= current_article.title unless current_article.nil? %></h2>
-              <p class="blog-post-meta"><%= current_article.date.strftime('%b %e') unless current_article.nil? %></p>
+              <p class="blog-post-meta"><%= current_article.date.strftime('%b %e, %Y') unless current_article.nil? %></p>
             </header>
 
             <%= yield %>
@@ -86,7 +86,7 @@
             <h2>Recent Articles</h2>
             <ol>
               <% blog.articles[0...10].each do |article| %>
-                <li><%= link_to article.title, article %> <span><%= article.date.strftime('%b %e') %></span></li>
+                <li><%= link_to article.title, article %> <span><%= article.date.strftime('%b %e, %Y') %></span></li>
               <% end %>
             </ol>
 
