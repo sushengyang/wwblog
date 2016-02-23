@@ -14,15 +14,16 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: 0;
+  margin-top: 30px;
+  margin-bottom: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #333;
 }
 
 .figure {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   border: 2px solid #EEE;
 /*  box-shadow: 0 4px 10px #CCC;*/
 }

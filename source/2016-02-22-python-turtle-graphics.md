@@ -46,3 +46,19 @@ for i in range(360):
   t.forward(200)
   t.right(92)
 ~~~
+
+## Shell.py
+
+<img class="figure img-responsive" src="https://db.tt/AUkiTrhH" alt="Shell.py">
+
+~~~ python
+import turtle
+
+turtle.bgcolor("black")
+t = turtle.Pen()
+t.pencolor("yellow")
+
+for i in range(200):
+  t.circle(i)
+  t.left(3)
+~~~
