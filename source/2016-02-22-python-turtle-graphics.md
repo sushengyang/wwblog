@@ -47,6 +47,36 @@ for i in range(360):
   t.right(92)
 ~~~
 
+## Bamboo.py
+
+<img class="figure img-responsive" src="https://db.tt/68J2pAtI" alt="Bamboo.py">
+
+~~~ python
+import turtle
+
+turtle.bgcolor("black")
+t = turtle.Pen()
+t.pencolor("green")
+t.left(90)
+
+height = 5
+width = 2
+
+for i in range(10):
+  k = 10 - i
+  t.forward(k * height)
+  t.right(90)
+  t.forward(k * width)
+  t.right(90)
+  t.forward(k * height)
+  t.right(90)
+  t.forward(k * width)
+
+  t.right(90)
+  t.forward(k * height)
+  t.left(5)
+~~~
+
 ## Shell.py
 
 <img class="figure img-responsive" src="https://db.tt/AUkiTrhH" alt="Shell.py">
