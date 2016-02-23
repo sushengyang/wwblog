@@ -1,5 +1,4 @@
-wwblog
-======
+# wwblog
 
 My personal blog, based on [Middleman](https://middlemanapp.com/).
 
@@ -10,8 +9,7 @@ Let's see if this is better than
 - Octopress
 - Jekyll
 
-Development
-===========
+# Development
 
 Middleman is a static site generator. But to build and run it:
 
@@ -20,8 +18,7 @@ Middleman is a static site generator. But to build and run it:
 
 Then point ye olde browser at http://localhost:4567.
 
-Deployment
-==========
+# Deployment
 
 Deployment is to a Heroku app called `williewheeler`. See [this post](http://12devs.co.uk/articles/204/) for more information on how setup and deployment works.
 
