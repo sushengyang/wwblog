@@ -10,7 +10,7 @@ around with. I may add more programs to this post over time.
 
 ## Squarish.py
 
-<img class="figure img-responsive" src="https://db.tt/UhRmwTQv" alt="Squarish.py">
+<img class="figure img-responsive" src="/images/posts/python-turtle-graphics/squarish.png" alt="Squarish.py">
 
 ~~~ python
 import turtle
@@ -29,7 +29,7 @@ for i in range(200):
 
 ## RotatingSquares.py
 
-<img class="figure img-responsive" src="https://db.tt/QwND6Qa6" alt="RotatingSquares.py">
+<img class="figure img-responsive" src="/images/posts/python-turtle-graphics/rotating-squares.png" alt="RotatingSquares.py">
 
 ~~~ python
 import turtle
@@ -49,7 +49,7 @@ for i in range(360):
 
 ## Bamboo.py
 
-<img class="figure img-responsive" src="https://db.tt/68J2pAtI" alt="Bamboo.py">
+<img class="figure img-responsive" src="/images/posts/python-turtle-graphics/bamboo.png" alt="Bamboo.py">
 
 ~~~ python
 import turtle
@@ -79,7 +79,7 @@ for i in range(10):
 
 ## Shell.py
 
-<img class="figure img-responsive" src="https://db.tt/AUkiTrhH" alt="Shell.py">
+<img class="figure img-responsive" src="/images/posts/python-turtle-graphics/shell.png" alt="Shell.py">
 
 ~~~ python
 import turtle
@@ -91,4 +91,35 @@ t.pencolor("yellow")
 for i in range(200):
   t.circle(i)
   t.left(3)
+~~~
+
+## Stars.py
+
+This one's from Nicu Parente, with minor modifications by me. Thanks Nicu.
+
+<img class="figure img-responsive" src="/images/posts/python-turtle-graphics/stars.png" alt="Shell.py">
+
+~~~ python
+import turtle
+
+colors = ["red", "yellow", "green", "blue"]
+numColors = len(colors)
+
+turtle.bgcolor("black")
+t = turtle.Pen()
+t.width(2)
+
+position = 1
+while (position < 10):
+  t.pencolor(colors[(position - 1) % numColors])
+  for i in range(5):
+    t.forward(10*position)
+    t.left(72)
+    t.forward(10*position)
+    t.right(144)
+  position += 1
+  t.left(92)
+  t.penup()
+  t.forward(90)
+  t.pendown()
 ~~~
