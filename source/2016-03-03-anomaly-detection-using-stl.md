@@ -9,7 +9,7 @@ In an [earlier post](/2015/05/16/monitoring-bookings-and-the-law-of-large-number
 
 This post describes a way to use dynamic thresholding to avoid that dilemma. We'll take a high-level look at an algorithm called STL, which stands for "Seasonal-Trend decomposition using Loess", and how to apply it to anomaly detection.
 
-The basic idea is that if you have a time series with a regular pattern to it, you can run the series through the STL algorithm and identify the regular pattern from the time series. Everything left over is by definition "irregular", and anomaly detection amounts to deciding whether the irregularity is sufficiently large.
+The basic idea is that if you have a time series with a regular pattern to it, you can run the series through the STL algorithm and isolate the regular pattern. Everything left over is by definition "irregular", and anomaly detection amounts to deciding whether the irregularity is sufficiently large.
 
 # An example: air passengers, 1949-1960
 
