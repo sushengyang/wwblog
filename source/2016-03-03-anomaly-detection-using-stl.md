@@ -47,9 +47,9 @@ Here's what's going on.
 
 First, if you're paying attention, you'll notice that I ran STL not on _x_ itself, but on _log(x)_. There's a reason for that, but we'll ignore that momentarily.
 
-The algorithm decomposes the series into three components: seasonal, trend and remainder. The _seasonal_ is the periodic component, the _trend_ is general up/down behavior, and the _remainder_ is what's left over. The seasonal and trend taken together the the "regular" part of the series, and thus the part that we want to discount during anomaly detection.
+The algorithm decomposes the series into three components: seasonal, trend and remainder. The _seasonal_ is the periodic component, the _trend_ is general up/down behavior, and the _remainder_ is what's left over. The seasonal and trend taken together form the "regular" part of the series, and thus the part that we want to discount during anomaly detection.
 
-The remainder is essentially a normalized version of the original series, and thus this is what we monitor for anomalies. Remainder series drops are readily apparent. What counts as alert-worthy is up to the user, but the drop we induced in early 1952 would surely count. The drop in early 1960 is fairly sizable as well, and not at all obvious when you look at the original plot. Indeed you have to look pretty carefully at the original to see it.
+The remainder is essentially a normalized version of the original series, so this is what we monitor for anomalies. Remainder series drops are readily apparent. What counts as alert-worthy is up to the user, but the drop we induced in early 1952 would surely count. The drop in early 1960 is fairly sizable as well, and not at all obvious when you look at the original plot. Indeed you have to look pretty carefully at the original to see it.
 
 <img class="figure img-responsive" src="/images/posts/anomaly-detection-using-stl/air-passengers-drop.png" alt="1960 drop">
 
