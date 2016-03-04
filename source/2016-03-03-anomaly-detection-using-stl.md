@@ -88,6 +88,6 @@ While there are procedures that generate decompositions with multiple seasonal c
 
 # References
 
-* [STL: A Seasonal-Trend Decompositino Procedure Based on Loess](http://www.wessa.net/download/stl.pdf): The original paper by Cleveland _et al_.
+* [STL: A Seasonal-Trend Decomposition Procedure Based on Loess](http://www.wessa.net/download/stl.pdf): The original paper by Cleveland _et al_.
 * [Forecasting: principles and practice, section 6.5](https://www.otexts.org/fpp/6/5)
 * [R documentation for the STL function](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/stl.html)
