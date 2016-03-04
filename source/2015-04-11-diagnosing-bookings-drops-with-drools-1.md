@@ -1,12 +1,10 @@
 ---
 type: blog-post
-title: Diagnosing Bookings Drops with Drools, Part 1
+title: Diagnosing Bookings Drops with Drools
 date: 2015-04-11
 tags: java, rules, drools, operations, webops, logic programming, ai
 published: true
 ---
-_This is the first of two posts on diagnosing bookings drops with Drools. This one deals with drops due to holidays. The second post will treat drops due to technical issues._
-
 I've been thinking of using a rules engine to help diagnose unexpected bookings drops. Rules are a good way to simplify reasoning about complex domains, and there are lots of different things that can lead to bookings drops. Examples include:
 
 - Technical issues
@@ -154,7 +152,3 @@ Diagnosis for alert R-2020: holiday=Independence Day (US) for country=US.
 ~~~
 
 For alert C-1000 there was a single, unambiguous diagnosis. For C-1010 there wan't one since Canadians don't celebrate American Thanksgiving. For R-2000 and R-2010 there were multiple diagnoses since the regions involved have multiple countries that celebrate Christmas.
-
-# Concluding remarks
-
-The example we treated in this post was of course very basic. It mostly just shows how rules work. In the next post we'll diagnose bookings drops caused by technical issues, which is more interesting because it's more complex. It will also give us a chance to see backward chaining in action.
