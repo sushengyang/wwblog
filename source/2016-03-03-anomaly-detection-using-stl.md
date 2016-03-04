@@ -74,7 +74,7 @@ The reason has to do with the nature of the decomposition. STL decomposition is 
 
 <p style="text-align:center;font-style:italic">y = s + t + r</p>
 
-But some time series have _multiplicative_ decompositions:
+But for some time series, a _multiplicative_ decomposition is a better fit:
 
 <p style="text-align:center;font-style:italic">y = str</p>
 
