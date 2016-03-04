@@ -78,7 +78,7 @@ But for some time series, a _multiplicative_ decomposition is a better fit:
 
 <p style="text-align:center;font-style:italic">y = str</p>
 
-This happens for example with sales data, where the amplitude of the seasonal component increases with increasing trend. This is in fact the hallmark of a multiplicative series, and the air passengers series exhibits this behavior. To deal with this, we log transform the original values, which carries us into addition-land, where we can do the STL decomposition. When we're done we can back-transform to get back to the original series.
+This happens for example with sales data, where the amplitude of the seasonal component increases with increasing trend. This is in fact the hallmark of a multiplicative series, and the air passengers series exhibits this behavior. To deal with this, we log transform the original values, which carries us into addition-land, where we can do the STL decomposition. When we're done we back-transform to get back to the original series.
 
 # What about multiple seasonalities?
 
