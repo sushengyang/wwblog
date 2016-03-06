@@ -2,13 +2,6 @@
 
 My personal blog, based on [Middleman](https://middlemanapp.com/).
 
-Let's see if this is better than
-
-- My custom blog
-- Wordpress
-- Octopress
-- Jekyll
-
 # Development
 
 Middleman is a static site generator. But to build and run it:
