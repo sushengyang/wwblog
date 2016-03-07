@@ -46,28 +46,73 @@ As I noted above, we use JNI for the integration. But for me one surprise was
 that we have to create a C adapter that sits between the Java and Fortran code.
 Basically Java calls the C adapter, which forwards the call to Fortran.
 
-So here's the outline:
+So here's the outline.
 
-### Fortran part
 1. Compile the Fortran code.
+2. Update the Java code so that it can load and call the native C and Fortran
+   code.
+3. Create a C adapter to bridge the Java and Fortran code.
+4. Create a native library containing the C and Fortran code.
+5. Run the Java against the native library.
 
-### Java part
-2. Add Java code to load the JNI library that we're going to build. This library
-   contains both the C adapter and the Fortran code we're calling.
-3. Add the C native method to the Java code. This is how Java calls C.
-4. Compile the Java code.
+# Step 1. Compile the Fortran code
 
-### C part
-5. Run `javah` on the compiled Java class to extract a C header file. This is
-   extracted from the native method from step 3 above.
-6. Write a C adapter, conforming to the header file, that calls the Fortran.
-7. Compile the C adapter code.
+In bash, this is pretty easy:
 
-### JNI library part
-8. Create a JNI library that contains the Fortran and C binaries we created
-   above.
+~~~ shell
+$ mkdir -p build/fortran
+$ gfortran -o build/fortran/stl.o -c src/main/fortran/stl.f
+~~~
 
-### Run the Java
-9. Run the Java code. It loads the JNI library we created (see steps 2 and 8
-   above), and then calls the C adapter method (see step 3 above). The C method
-   in turn calls the Fortran subroutine (see step 6 above).
+In Gradle it's, well, more:
+
+~~~ groovy
+task prepareFortran(type: Exec) {
+  workingDir buildDir
+  commandLine 'mkdir', '-p', 'fortran'
+}
+
+task compileFortran(type: Exec) {
+  def src = file("src/main/fortran/stl.f")
+  def outputDir = file("${buildDir}/fortran")
+  def objName = "stl.o"
+
+  group "Build"
+  description "Compiles the Fortran sources."
+  workingDir outputDir
+  commandLine 'gfortran', '-o', objName, '-c', src
+  dependsOn prepareFortran
+}
+~~~
+
+# Step 2. Update the Java code to make the native call
+
+The basic idea here is to give the Java code the ability to load and call the
+JNI library, which contains the C and Fortran code.
+
+- Add Java code to load the JNI library that we're going to build. This library
+  contains both the C adapter and the Fortran code we're calling.
+- Add the C native method to the Java code. This is how Java calls C.
+- Compile the Java code.
+
+# Step 3. Create the C adapter
+
+Here the goal is to create a C adapter that bridges the Java and Fortran sides.
+
+- Run `javah` on the compiled Java class to extract a C header file. This is
+  extracted from the native method from step 3 above.
+- Write a C adapter, conforming to the header file, that calls the Fortran.
+- Compile the C adapter code.
+
+# Step 4. Create the JNI library
+
+Now we want to package the C and Fortran code in a way that Java can use it.
+
+- Create a JNI library that contains the Fortran and C binaries we created
+  above.
+
+# Step 5. Run the Java
+
+- Run the Java code. It loads the JNI library we created (see steps 2 and 8
+  above), and then calls the C adapter method (see step 3 above). The C method
+  in turn calls the Fortran subroutine (see step 6 above).
