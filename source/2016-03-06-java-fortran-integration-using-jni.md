@@ -243,14 +243,16 @@ You'll also need to add a Gradle task to compile the C code:
 
 ~~~ groovy
 task compileC(type: Exec) {
-  def sysHeadersDir = file("/System/Library/Frameworks/JavaVM.framework/Headers")
+  def sysHeadersDir =
+      file("/System/Library/Frameworks/JavaVM.framework/Headers")
   def jniHeadersDir = file("${buildDir}/c/jni-headers")
   def src = file("src/main/c/stl.c")
   def obj = file("${buildDir}/c/stl.o")
 
   group "Build"
   description "Compiles the C sources."
-  commandLine 'gcc', '-c', '-o', obj, '-I', sysHeadersDir, '-I', jniHeadersDir, src
+  commandLine 'gcc', '-c', '-o', obj, '-I', sysHeadersDir,
+      '-I', jniHeadersDir, src
   dependsOn generateJniHeaders
 }
 ~~~
