@@ -100,8 +100,8 @@ I recently learned of an enhanced R-based implementation of the algorithm, by Ry
 
 # References
 
-* [Forecasting: principles and practice, section 6.5](https://www.otexts.org/fpp/6/5)
+* [Hyndman, Rob J. & Athanasopoulos, George. Forecasting: principles and practice, section 6.5](https://www.otexts.org/fpp/6/5)
 * [Cleveland, R. B., Cleveland, W. S., McRae, J. E., & Terpenning, I. (1990). STL: A seasonal-trend decomposition procedure based on loess. *Journal of Official Statistics*, 6(1), 3-73.](http://cs.wellesley.edu/~cs315/Papers/stl%20statistical%20model.pdf)
 * [Hafen, R. P. "Local regression models: Advancements, applications, and new methods." (2010).](http://ml.stat.purdue.edu/hafen/preprints/Hafen_thesis.pdf)
 * [R documentation for the STL function](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/stl.html)
-* [stlplus GitHub repo](https://github.com/hafen/stlplus)
+* [stlplus (GitHub repo)](https://github.com/hafen/stlplus)
