@@ -48,6 +48,8 @@ The algorithm decomposes the series into three components: seasonal, trend and r
 
 The remainder is essentially a normalized version of the original series, so this is what we monitor for anomalies. Remainder series drops are readily apparent. What counts as alert-worthy is up to the user, but the drop we induced in early 1952 would likely count.
 
+Though here we're just going with default parameters, [STL supports a fair number of parameters](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/stl.html). They allow you to control things like the number of observations per period, the smoothing behavior responsible for separating the seasonal and trend components, the "robustness" (i.e., outlier insensitivity) of the fitted model and so forth. Most of these parameters require some understanding of how the underlying algorithm works. I won't go into that here since this is an overview.
+
 Here's some code to display the actuals against the thresholds. Install the ggplot2 R package if you don't already have it.
 
 ~~~ R
@@ -70,7 +72,7 @@ Once again, the eagle-eyed among you might notice the back-transform via _exp()_
 
 # Why the log- and back-transforms?
 
-The reason has to do with the nature of the decomposition. STL decomposition is always _additive_:
+Not all decompositions involve log transforms, but this one does. The reason has to do with the nature of the decomposition. STL decomposition is always _additive_:
 
 <p style="text-align:center;font-style:italic">y = s + t + r</p>
 
@@ -86,8 +88,20 @@ Some time series have more than one seasonality. For example, at Expedia (where 
 
 While there are procedures that generate decompositions with multiple seasonal components, STL doesn't do that. The highest frequency seasonality gets to be the seasonal component, and any lower frequency seasonalities get absorbed into the trend.
 
+# Update: stlplus
+
+I recently learned of an enhanced R-based implementation of the algorithm, by Ryan Hafen, called [stlplus](https://github.com/hafen/stlplus). New features include:
+
+* Handles gaps in the time series by interpolation.
+* Loess smoother supports quadratic local regression (original implementation supported only degrees 0 and 1).
+* Can produce additional frequency components beyond the seasonal and trend components.
+* Applies a "blending" procedure to reduce error at the time series endpoints.
+* Has various plots to support diagnostics.
+
 # References
 
-* [STL: A Seasonal-Trend Decomposition Procedure Based on Loess](http://www.wessa.net/download/stl.pdf): The original paper by Cleveland _et al_.
 * [Forecasting: principles and practice, section 6.5](https://www.otexts.org/fpp/6/5)
+* [Cleveland, R. B., Cleveland, W. S., McRae, J. E., & Terpenning, I. (1990). STL: A seasonal-trend decomposition procedure based on loess. *Journal of Official Statistics*, 6(1), 3-73.](http://cs.wellesley.edu/~cs315/Papers/stl%20statistical%20model.pdf)
+* [Hafen, R. P. "Local regression models: Advancements, applications, and new methods." (2010).](http://ml.stat.purdue.edu/hafen/preprints/Hafen_thesis.pdf)
 * [R documentation for the STL function](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/stl.html)
+* [stlplus GitHub repo](https://github.com/hafen/stlplus)
