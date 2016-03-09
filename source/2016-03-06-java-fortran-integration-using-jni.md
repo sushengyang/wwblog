@@ -2,7 +2,7 @@
 type: blog-post
 title: Java/Fortran Integration Using JNI
 date: 2016-03-06
-tags: java, fortran, c, jni, gradle
+tags: java, fortran, c, jni, gradle, stl
 published: true
 ---
 While Java/Fortran integration isn't something I expect to have to do very
